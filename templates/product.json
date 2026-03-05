@@ -117,6 +117,7 @@
         "logo_XTbaAW": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/imgi_24_blood_13858030_1.png",
             "logo_alt": ""
           }
         },
@@ -776,7 +777,7 @@
       ],
       "settings": {
         "heading": "Frequently Asked Questions",
-        "bg_color": "#F8F5EE",
+        "bg_color": "#f8f5ee",
         "custom_class": "",
         "cta_text": "Try Lymphatic Drainage Risk-Free",
         "cta_link": "",
