@@ -296,47 +296,69 @@
       "blocks": {
         "green_1": {
           "type": "green_check",
-          "settings": { "text": "Waste gets drained away" }
+          "settings": {
+            "text": "Waste gets drained away"
+          }
         },
         "green_2": {
           "type": "green_check",
-          "settings": { "text": "Fluid stays balanced." }
+          "settings": {
+            "text": "Fluid stays balanced."
+          }
         },
         "green_3": {
           "type": "green_check",
-          "settings": { "text": "Your body feels light and energized." }
+          "settings": {
+            "text": "Your body feels light and energized."
+          }
         },
         "red_1": {
           "type": "red_cross",
-          "settings": { "text": "Vessel pumping weakens." }
+          "settings": {
+            "text": "Vessel pumping weakens."
+          }
         },
         "red_2": {
           "type": "red_cross",
-          "settings": { "text": "One-way valves fail." }
+          "settings": {
+            "text": "One-way valves fail."
+          }
         },
         "red_3": {
           "type": "red_cross",
-          "settings": { "text": "Protein clogs form." }
+          "settings": {
+            "text": "Protein clogs form."
+          }
         },
         "red_4": {
           "type": "red_cross",
-          "settings": { "text": "Vessel walls become leaky." }
+          "settings": {
+            "text": "Vessel walls become leaky."
+          }
         },
         "why_1": {
           "type": "thats_why",
-          "settings": { "text": "That's why you're bloated." }
+          "settings": {
+            "text": "That's why you're bloated."
+          }
         },
         "why_2": {
           "type": "thats_why",
-          "settings": { "text": "That's why your ankles swell." }
+          "settings": {
+            "text": "That's why your ankles swell."
+          }
         },
         "why_3": {
           "type": "thats_why",
-          "settings": { "text": "That's why you see cellulite." }
+          "settings": {
+            "text": "That's why you see cellulite."
+          }
         },
         "why_4": {
           "type": "thats_why",
-          "settings": { "text": "That's why you feel exhausted and foggy." }
+          "settings": {
+            "text": "That's why you feel exhausted and foggy."
+          }
         }
       },
       "block_order": [
@@ -353,6 +375,18 @@
         "why_4"
       ],
       "settings": {
+        "chart_image": "shopify://shop_images/imgi_15_LymphDrainageREWAMPEDvisualsArtboard6_ffe821de-bc1f-47f9-99c0-e5e925de1036.jpg",
+        "intro_text": "<p>Your lymphatic system is your body's internal cleaning crew—a network of vessels that processes <strong>3-4 liters of cellular waste and excess fluid every single day.</strong></p>",
+        "intro_working": "When it's working properly, you don't even know it exists.",
+        "callout_estrogen": "<p>But after age 35, declining estrogen hijacks this system's ability to function.</p>",
+        "instead_text": "Instead of processing and removing waste, it backs up in your tissues.",
+        "anatomy_image": "shopify://shop_images/imgi_13_LymphDrainageREWAMPEDvisualsArtboard13_32c9af9c-8847-44b0-aa75-e2a4485a459e.jpg",
+        "accumulates_heading": "And it accumulates. Day after day. Week after week.",
+        "accumulates_body": "<p>That gallon of fluid your body should be draining every 24 hours? It's pooling in your stomach, your legs, your face—anywhere gravity and tissue structure allow it to settle.</p>",
+        "callout_waste": "<p>The metabolic waste your cells produce overnight? It's still sitting there at noon. At dinner. While you're trying to fall asleep.</p>",
+        "cells_sitting": "<p><strong>Your cells are literally sitting in their own waste—and your body can't flush it out.</strong></p>",
+        "longer_text": "The longer this goes on, the worse it gets. More congestion. More inflammation. More pressure on an already compromised system.",
+        "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 60
       }
