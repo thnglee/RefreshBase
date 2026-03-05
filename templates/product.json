@@ -181,30 +181,35 @@
         "symptom_1": {
           "type": "symptom",
           "settings": {
+            "image": "shopify://shop_images/i3.png",
             "caption": "Your stomach is flat in the morning, but by evening you look six months pregnant."
           }
         },
         "symptom_2": {
           "type": "symptom",
           "settings": {
+            "image": "shopify://shop_images/imgi_16_LymphDrainageREWAMPEDvisualsArtboard8_7fd22649-8e8a-4ce4-8f56-6f4ae69f01ba.jpg",
             "caption": "Your ankles disappear into \"kankles\" by the end of the day."
           }
         },
         "symptom_3": {
           "type": "symptom",
           "settings": {
+            "image": "shopify://shop_images/imgi_19_LymphDrainageREWAMPEDvisualsArtboard11_5aeb71c6-e5f4-43ce-8926-c2cdecdb214d.jpg",
             "caption": "That dimpled, cottage cheese texture on your thighs won't go away no matter what you try."
           }
         },
         "symptom_4": {
           "type": "symptom",
           "settings": {
+            "image": "shopify://shop_images/imgi_8_LymphDrainageREWAMPEDvisualsArtboard5_1_4db3d1be-ce01-40bf-9306-8ca7cfba84ce.jpg",
             "caption": "You feel foggy and exhausted even after a full night's sleep."
           }
         },
         "symptom_5": {
           "type": "symptom",
           "settings": {
+            "image": "shopify://shop_images/pro71-5.png",
             "caption": "You wake up stiff and achy, like your body aged overnight."
           }
         }
@@ -416,7 +421,7 @@
         "color_scheme": "",
         "padding_top": 60,
         "padding_bottom": 60
-    }
+      }
     },
     "ingredient_system": {
       "type": "ingredient-system",
@@ -427,6 +432,7 @@
             "benefit_title": "Reactivate Lymphatic Pumps",
             "ingredient_name": "Cleavers Extract",
             "dosage": "100mg",
+            "image": "shopify://shop_images/imgi_3_leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png",
             "description": "Restores rhythmic vessel contractions that move lymph through your system. Contains iridoids that \"wake up\" muscle cells in vessel walls. 2024 study showed enhanced immune cell activity for better waste clearance. [Study: Enhanced NK cell activity in immunosuppressed models]"
           }
         },
@@ -436,6 +442,7 @@
             "benefit_title": "Flush Excess Fluid",
             "ingredient_name": "Dandelion Extract",
             "dosage": "250mg",
+            "image": "shopify://shop_images/imgi_4_vday_1_f6420e52-356b-4d11-a4e3-be5bd3342c56.png",
             "description": "Proven gentle diuretic that increases fluid excretion without harsh side effects. Human trial showed statistically significant increase in urination frequency (p<0.05) and excretion ratio (p<0.001). [Study: First human pilot study on diuretic effects]"
           }
         },
@@ -445,6 +452,7 @@
             "benefit_title": "Break Down Protein Clogs",
             "ingredient_name": "Bromelain Powder",
             "dosage": "100mg",
+            "image": "shopify://shop_images/badge.svg",
             "description": "Proteolytic enzyme that breaks down accumulated protein deposits blocking lymphatic vessels. Reduces tissue inflammation and supports natural drainage pathways."
           }
         },
@@ -454,6 +462,7 @@
             "benefit_title": "Strengthen Vessel Walls",
             "ingredient_name": "Rutin",
             "dosage": "100mg",
+            "image": "shopify://shop_images/imgi_25_thigh_1431039_1_a75a1917-7cc8-40dc-923b-d09cece1d6e9.png",
             "description": "Bioflavonoid that reinforces lymphatic vessel wall integrity. Reduces permeability so fluid stays where it belongs instead of leaking into surrounding tissues."
           }
         },
@@ -463,6 +472,7 @@
             "benefit_title": "Reduce Inflammation",
             "ingredient_name": "Burdock Root Powder",
             "dosage": "200mg",
+            "image": "shopify://shop_images/imgi_28_ecology_18588873_1_dad420da-2490-4e30-828a-28b366974307.png",
             "description": "Powerful anti-inflammatory that calms chronic tissue inflammation caused by lymphatic stagnation. Contains arctigenin shown to modulate inflammatory pathways."
           }
         },
@@ -472,6 +482,7 @@
             "benefit_title": "Boost Immune Clearance",
             "ingredient_name": "Echinacea Purpurea Extract",
             "dosage": "500mg",
+            "image": "shopify://shop_images/shipping-protection.png",
             "description": "Activates macrophages and natural killer cells to clear debris and pathogens from congested lymphatic pathways. Supports the immune surveillance function of lymph nodes."
           }
         },
@@ -481,6 +492,7 @@
             "benefit_title": "Support Metabolism",
             "ingredient_name": "Kelp Extract",
             "dosage": "30mg",
+            "image": "shopify://shop_images/imgi_3_leaves_1247958_1_cf2e7df4-c113-4c3a-be49-f876ec94d873.png",
             "description": "Natural source of iodine that supports thyroid function and metabolic rate. Helps the body process and eliminate waste products more efficiently."
           }
         },
@@ -490,6 +502,7 @@
             "benefit_title": "Antioxidant Protection",
             "ingredient_name": "Lemon Powder",
             "dosage": "50mg",
+            "image": "shopify://shop_images/Group_1171277452.png",
             "description": "Rich in vitamin C and bioflavonoids that protect lymphatic vessel cells from oxidative damage. Supports collagen production for vessel structural integrity."
           }
         },
