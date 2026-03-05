@@ -5,6 +5,7 @@
 .drainage-section {
   background: #fff;
   padding: var(--drainage-pt, 0px) 0 var(--drainage-pb, 60px);
+  overflow-x: hidden;
 }
 
 .drainage-section__inner {
@@ -166,27 +167,56 @@
 @media screen and (max-width: 749px) {
   .drainage-section__inner {
     gap: 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
 
   .drainage-part {
     grid-template-columns: 1fr;
     gap: 24px;
+    width: 100%;
   }
 
   /* On mobile, chart image comes FIRST (above text) */
   .drainage-part--intro {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 
   .drainage-part--intro .drainage-img-col--chart {
     order: -1;
+    width: 100%;
   }
 
   /* Anatomy images stay on top on mobile too */
   .drainage-part--accumulation {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .drainage-img-col {
+    width: 100%;
+  }
+
+  .drainage-chart-img,
+  .drainage-anatomy-img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .drainage-placeholder {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .drainage-text-col {
+    width: 100%;
   }
 
   .drainage-body {
@@ -203,6 +233,8 @@
 
   .drainage-callout {
     padding: 16px 18px;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .drainage-callout p {
