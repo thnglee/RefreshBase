@@ -225,6 +225,72 @@
         "padding_bottom": 60
       }
     },
+    "connection_section": {
+      "type": "connection-section",
+      "blocks": {
+        "row_bloating": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "bloating",
+            "symptom_name": "Bloating & puffiness",
+            "cause_text": "3-4 liters of lymphatic fluid backing up in tissues daily"
+          }
+        },
+        "row_legs": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "legs",
+            "symptom_name": "Swollen legs",
+            "cause_text": "Gravity pulling backed-up lymph into lower extremities"
+          }
+        },
+        "row_cellulite": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "cellulite",
+            "symptom_name": "Cellulite appearance",
+            "cause_text": "Fluid and toxins trapped between fat cells, creating dimpling"
+          }
+        },
+        "row_brain": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "brain",
+            "symptom_name": "Brain fog & exhaustion",
+            "cause_text": "Glymphatic system can't clear metabolic waste from brain"
+          }
+        },
+        "row_stiffness": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "stiffness",
+            "symptom_name": "Morning stiffness",
+            "cause_text": "Overnight lymph accumulation in joints and tissues"
+          }
+        }
+      },
+      "block_order": [
+        "row_bloating",
+        "row_legs",
+        "row_cellulite",
+        "row_brain",
+        "row_stiffness"
+      ],
+      "settings": {
+        "callout_heading": "Here's what nobody's telling you:",
+        "callout_subtext": "These aren't separate problems. They're all symptoms of the same root cause.",
+        "heading_prefix": "The Connection",
+        "heading_highlight": "You've Been Missing",
+        "col_symptom_label": "Your Symptom",
+        "col_cause_label": "The Real Cause",
+        "teaser_prefix": "Your",
+        "teaser_highlight": "Hidden",
+        "teaser_suffix": "Drainage System",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "multirow_gVyiGw": {
       "type": "multirow",
       "blocks": {
@@ -325,6 +391,7 @@
     "related-products",
     "logo_bar",
     "why_symptoms",
+    "connection_section",
     "multirow_gVyiGw",
     "collage_jPbzhP"
   ]

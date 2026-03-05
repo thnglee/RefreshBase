@@ -1,0 +1,202 @@
+/* ============================================================
+   CONNECTION SECTION
+   ============================================================ */
+
+.connection-section {
+  background: #fff;
+  padding: var(--connection-pt, 60px) 0 var(--connection-pb, 60px);
+}
+
+.connection-section__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ── Pink callout box ────────────────────────────────────── */
+.connection-callout {
+  background: #fce8e8;
+  border-radius: 18px;
+  padding: 28px 36px;
+  text-align: center;
+  max-width: 660px;
+  width: 100%;
+}
+
+.connection-callout__heading {
+  font-family: var(--font-heading-family, 'Georgia', serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.connection-callout__sub {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Double chevron divider ──────────────────────────────── */
+.connection-chevron {
+  width: 44px;
+  opacity: 0.75;
+}
+
+.connection-chevron svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Section heading ─────────────────────────────────────── */
+.connection-heading {
+  font-family: var(--font-heading-family, 'Georgia', serif);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.connection-heading__highlight {
+  color: #3a9a7c;
+}
+
+/* ── Table ───────────────────────────────────────────────── */
+.connection-table {
+  width: 100%;
+  border: 1.5px solid #3a9a7c;
+  border-radius: 16px;
+  background: #f5f0e8;
+  overflow: hidden;
+}
+
+.connection-table__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px 28px;
+  font-family: var(--font-heading-family, 'Georgia', serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  border-bottom: 1.5px solid rgba(58, 154, 124, 0.25);
+}
+
+.connection-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid rgba(58, 154, 124, 0.18);
+  gap: 16px;
+}
+
+.connection-table__row:last-child {
+  border-bottom: none;
+}
+
+/* ── Symptom cell ────────────────────────────────────────── */
+.connection-table__symptom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.connection-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: #3a9a7c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.connection-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.connection-symptom-name {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  line-height: 1.4;
+}
+
+/* ── Cause cell ──────────────────────────────────────────── */
+.connection-table__cause {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ── Teaser heading ──────────────────────────────────────── */
+.connection-teaser-heading {
+  font-family: var(--font-heading-family, 'Georgia', serif);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media screen and (max-width: 749px) {
+  .connection-callout {
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+
+  .connection-callout__heading {
+    font-size: 1.2rem;
+  }
+
+  .connection-table__header {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .connection-table__row {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .connection-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 6px;
+  }
+
+  .connection-symptom-name {
+    font-size: 0.875rem;
+  }
+
+  .connection-table__cause {
+    font-size: 0.85rem;
+  }
+
+  .connection-table__symptom {
+    gap: 8px;
+  }
+}

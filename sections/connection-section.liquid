@@ -1,0 +1,282 @@
+{{ 'connection-section.css' | asset_url | stylesheet_tag }}
+
+<section class="connection-section" id="connection-section">
+  <div class="connection-section__inner">
+    {%- comment -%} Pink callout box {%- endcomment -%}
+    <div class="connection-callout">
+      <p class="connection-callout__heading">{{ section.settings.callout_heading }}</p>
+      <p class="connection-callout__sub">{{ section.settings.callout_subtext }}</p>
+    </div>
+
+    {%- comment -%} Double chevron divider {%- endcomment -%}
+    <div class="connection-chevron" aria-hidden="true">
+      <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="4,2 20,14 36,2" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <polyline points="4,12 20,24 36,12" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+    {%- comment -%} Section heading {%- endcomment -%}
+    <h2 class="connection-heading">
+      {{ section.settings.heading_prefix }}
+      <span class="connection-heading__highlight">{{ section.settings.heading_highlight }}</span>
+    </h2>
+
+    {%- comment -%} Symptom-cause table {%- endcomment -%}
+    <div class="connection-table">
+      <div class="connection-table__header">
+        <span>{{ section.settings.col_symptom_label }}</span>
+        <span>{{ section.settings.col_cause_label }}</span>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'symptom_row' -%}
+          <div class="connection-table__row" {{ block.shopify_attributes }}>
+            <div class="connection-table__symptom">
+              <div class="connection-icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'bloating' -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="18" cy="20" r="10" stroke="white" stroke-width="2" fill="none"/>
+                      <path d="M14 17 Q18 14 22 17" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                      <path d="M12 22 Q18 28 24 22" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                      <circle cx="18" cy="10" r="2" fill="white"/>
+                      <line x1="18" y1="12" x2="18" y2="15" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  {%- when 'legs' -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13 8 L11 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                      <path d="M13 8 L23 8 L21 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <path d="M11 28 L9 32" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                      <path d="M21 28 L19 32" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                      <ellipse cx="13" cy="26" rx="4" ry="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+                      <ellipse cx="21" cy="26" rx="4" ry="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+                    </svg>
+                  {%- when 'cellulite' -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 8 Q18 5 26 8 L28 28 Q18 32 8 28 Z" stroke="white" stroke-width="2" fill="none"/>
+                      <circle cx="15" cy="16" r="1.5" fill="white"/>
+                      <circle cx="21" cy="14" r="1.5" fill="white"/>
+                      <circle cx="13" cy="22" r="1.5" fill="white"/>
+                      <circle cx="20" cy="21" r="1.5" fill="white"/>
+                      <circle cx="24" cy="18" r="1.5" fill="white"/>
+                    </svg>
+                  {%- when 'brain' -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 8 C14 8 10 11 10 15 C10 17 11 19 13 20 C12 21 11 23 11 25 C11 27 13 29 15 29 L18 29" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                      <path d="M18 8 C22 8 26 11 26 15 C26 17 25 19 23 20 C24 21 25 23 25 25 C25 27 23 29 21 29 L18 29" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                      <line x1="18" y1="8" x2="18" y2="29" stroke="white" stroke-width="1.5" stroke-dasharray="2,2"/>
+                      <line x1="14" y1="17" x2="22" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M22 4 L24 7 L27 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                  {%- when 'stiffness' -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="18" cy="14" r="5" stroke="white" stroke-width="2" fill="none"/>
+                      <path d="M13 19 L10 28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M23 19 L26 28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M15 22 L21 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M10 28 L8 32" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M26 28 L28 32" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="18" cy="14" r="2" fill="white"/>
+                    </svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="18" cy="18" r="10" stroke="white" stroke-width="2" fill="none"/>
+                      <line x1="18" y1="12" x2="18" y2="24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                      <line x1="12" y1="18" x2="24" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                {%- endcase -%}
+              </div>
+              <span class="connection-symptom-name">{{ block.settings.symptom_name }}</span>
+            </div>
+            <div class="connection-table__cause">{{ block.settings.cause_text }}</div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Double chevron divider {%- endcomment -%}
+    <div class="connection-chevron" aria-hidden="true">
+      <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="4,2 20,14 36,2" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <polyline points="4,12 20,24 36,12" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+    {%- comment -%} Drainage system teaser heading {%- endcomment -%}
+    <h2 class="connection-teaser-heading">
+      {{ section.settings.teaser_prefix }}
+      <span class="connection-heading__highlight">{{ section.settings.teaser_highlight }}</span>
+      {{ section.settings.teaser_suffix }}
+    </h2>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Connection Section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "callout_heading",
+      "label": "Callout heading",
+      "default": "Here's what nobody's telling you:"
+    },
+    {
+      "type": "text",
+      "id": "callout_subtext",
+      "label": "Callout subtext",
+      "default": "These aren't separate problems. They're all symptoms of the same root cause."
+    },
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading prefix",
+      "default": "The Connection"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading highlight (teal)",
+      "default": "You've Been Missing"
+    },
+    {
+      "type": "text",
+      "id": "col_symptom_label",
+      "label": "Column 1 label",
+      "default": "Your Symptom"
+    },
+    {
+      "type": "text",
+      "id": "col_cause_label",
+      "label": "Column 2 label",
+      "default": "The Real Cause"
+    },
+    {
+      "type": "text",
+      "id": "teaser_prefix",
+      "label": "Teaser heading prefix",
+      "default": "Your"
+    },
+    {
+      "type": "text",
+      "id": "teaser_highlight",
+      "label": "Teaser heading highlight (teal)",
+      "default": "Hidden"
+    },
+    {
+      "type": "text",
+      "id": "teaser_suffix",
+      "label": "Teaser heading suffix",
+      "default": "Drainage System"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "symptom_row",
+      "name": "Symptom row",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bloating", "label": "Bloating" },
+            { "value": "legs", "label": "Swollen legs" },
+            { "value": "cellulite", "label": "Cellulite" },
+            { "value": "brain", "label": "Brain" },
+            { "value": "stiffness", "label": "Stiffness" }
+          ],
+          "default": "bloating"
+        },
+        {
+          "type": "text",
+          "id": "symptom_name",
+          "label": "Symptom name",
+          "default": "Bloating & puffiness"
+        },
+        {
+          "type": "text",
+          "id": "cause_text",
+          "label": "Real cause description",
+          "default": "3-4 liters of lymphatic fluid backing up in tissues daily"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Connection Section",
+      "blocks": [
+        {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "bloating",
+            "symptom_name": "Bloating & puffiness",
+            "cause_text": "3-4 liters of lymphatic fluid backing up in tissues daily"
+          }
+        },
+        {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "legs",
+            "symptom_name": "Swollen legs",
+            "cause_text": "Gravity pulling backed-up lymph into lower extremities"
+          }
+        },
+        {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "cellulite",
+            "symptom_name": "Cellulite appearance",
+            "cause_text": "Fluid and toxins trapped between fat cells, creating dimpling"
+          }
+        },
+        {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "brain",
+            "symptom_name": "Brain fog & exhaustion",
+            "cause_text": "Glymphatic system can't clear metabolic waste from brain"
+          }
+        },
+        {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "stiffness",
+            "symptom_name": "Morning stiffness",
+            "cause_text": "Overnight lymph accumulation in joints and tissues"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
