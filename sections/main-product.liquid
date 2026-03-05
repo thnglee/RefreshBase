@@ -88,7 +88,91 @@
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
-              {%- when '@app' -%}
+                      {%- when 'trust_review' -%}
+          <div class="pinfo-trust-bar" {{ block.shopify_attributes }}>
+            <div class="pinfo-trust-bar__stars" aria-label="{{ block.settings.stars | escape }} out of 5 stars">
+              {%- for i in (1..block.settings.stars) -%}
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="{{ block.settings.star_color }}"/></svg>
+              {%- endfor -%}
+            </div>
+            <p class="pinfo-trust-bar__text">{{ block.settings.text }}</p>
+          </div>
+        {%- when 'benefit_list' -%}
+          <ul class="pinfo-benefit-list" {{ block.shopify_attributes }}>
+            {%- for i in (1..6) -%}
+              {%- assign icon_setting = 'icon_' | append: i -%}
+              {%- assign text_setting = 'text_' | append: i -%}
+              {%- if block.settings[text_setting] != blank -%}
+                <li class="pinfo-benefit-list__item">
+                  <span class="pinfo-benefit-list__icon">{% render 'icon-accordion', icon: block.settings[icon_setting] %}</span>
+                  <p class="pinfo-benefit-list__text">{{ block.settings[text_setting] }}</p>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- when 'edd' -%}
+          <div class="pinfo-edd" {{ block.shopify_attributes }}>
+            <svg viewBox="0 0 24 24" style="width:2rem;height:2rem;flex-shrink:0;" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 8h4l3 4v4h-7V8z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            <span>{{ block.settings.prefix_text }} <strong class="pinfo-edd__date">{{ 'now' | date: '%A, %d %B' }}</strong> {{ block.settings.suffix_text }}</span>
+          </div>
+        {%- when 'payment_methods' -%}
+          <div class="pinfo-payment-methods" {{ block.shopify_attributes }}>
+            {{ shop.enabled_payment_types | payment_type_svg_tag: class: 'payment-icon' }}
+          </div>
+        {%- when 'trust_badges' -%}
+          <div class="pinfo-trust-badges" {{ block.shopify_attributes }}>
+            {%- if block.settings.badge_1_text != blank -%}
+              <div class="pinfo-badge-row">
+                <svg viewBox="0 0 24 24" style="width:2.2rem;height:2.2rem;flex-shrink:0;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                <span>{{ block.settings.badge_1_text }}</span>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.badge_2_text != blank -%}
+              <div class="pinfo-badge-row">
+                <svg viewBox="0 0 24 24" style="width:2.2rem;height:2.2rem;flex-shrink:0;" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 8h4l3 4v4h-7V8z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                <span>{{ block.settings.badge_2_text }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- when 'review_snippet' -%}
+          <div class="pinfo-review-card" {{ block.shopify_attributes }}>
+            <div class="pinfo-review-header">
+              {%- if block.settings.avatar != blank -%}
+                <img class="pinfo-review-avatar" src="{{ block.settings.avatar | image_url: width: 56 }}" alt="{{ block.settings.author_name | escape }}" width="56" height="56" loading="lazy">
+              {%- else -%}
+                <img class="pinfo-review-avatar" src="{{ 'icon-silhouette.svg' | asset_url }}" alt="{{ block.settings.author_name | escape }}" width="56" height="56" loading="lazy">
+              {%- endif -%}
+              <div class="pinfo-review-meta">
+                <div class="pinfo-review-name-row">
+                  <span class="pinfo-review-name">{{ block.settings.author_name }}</span>
+                  <span class="pinfo-review-verified">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#2a9d5c" stroke-width="2" fill="none"/><polyline points="22 4 12 14.01 9 11.01" stroke="#2a9d5c" stroke-width="2" fill="none"/></svg>
+                    {{ block.settings.verified_text }}
+                  </span>
+                </div>
+                <div class="pinfo-review-stars" aria-label="{{ block.settings.stars | escape }} out of 5 stars">
+                  {%- for i in (1..block.settings.stars) -%}
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#f5a623"/></svg>
+                  {%- endfor -%}
+                </div>
+              </div>
+            </div>
+            <p class="pinfo-review-title">{{ block.settings.review_title }}</p>
+            <div class="pinfo-review-body">{{ block.settings.review_body }}</div>
+          </div>
+        {%- when 'pinfo_accordion' -%}
+          <div class="pinfo-accordions" {{ block.shopify_attributes }}>
+            <details class="pinfo-accordion" {% if block.settings.open %}open{% endif %}>
+              <summary>
+                {{ block.settings.heading | escape }}
+                <span class="pinfo-accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="pinfo-accordion__body">
+                {{ block.settings.content }}
+              </div>
+            </details>
+          </div>
+{%- when '@app' -%}
                 {% render block %}
               {%- when 'text' -%}
                 <p
@@ -740,6 +824,7 @@
 </product-info>
 
 {% schema %}
+
 {
   "name": "t:sections.main-product.name",
   "tag": "section",
@@ -2087,6 +2172,393 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "trust_review",
+      "name": "Trust Review Bar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "4.8/5 Excellent | Based on 2381 Reviews"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star Color",
+          "default": "#00b67a"
+        }
+      ]
+    },
+    {
+      "type": "benefit_list",
+      "name": "Benefit List",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_1",
+          "label": "Icon 1",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_1",
+          "label": "Text 1"
+        },
+        {
+          "type": "select",
+          "id": "icon_2",
+          "label": "Icon 2",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Text 2"
+        },
+        {
+          "type": "select",
+          "id": "icon_3",
+          "label": "Icon 3",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Text 3"
+        },
+        {
+          "type": "select",
+          "id": "icon_4",
+          "label": "Icon 4",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_4",
+          "label": "Text 4"
+        },
+        {
+          "type": "select",
+          "id": "icon_5",
+          "label": "Icon 5",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_5",
+          "label": "Text 5"
+        },
+        {
+          "type": "select",
+          "id": "icon_6",
+          "label": "Icon 6",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__16.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__18.label"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__20.label"
+            },
+            {
+              "value": "plant",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__30.label"
+            },
+            {
+              "value": "silhouette",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__39.label"
+            },
+            {
+              "value": "snowflake",
+              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__40.label"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text_6",
+          "label": "Text 6"
+        }
+      ]
+    },
+    {
+      "type": "edd",
+      "name": "Estimated Delivery",
+      "settings": [
+        {
+          "type": "text",
+          "id": "prefix_text",
+          "label": "Prefix Text",
+          "default": "Delivered on"
+        },
+        {
+          "type": "text",
+          "id": "suffix_text",
+          "label": "Suffix Text",
+          "default": "with Express Shipping"
+        }
+      ]
+    },
+    {
+      "type": "payment_methods",
+      "name": "Payment Methods",
+      "settings": []
+    },
+    {
+      "type": "trust_badges",
+      "name": "Trust Badges",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_1_text",
+          "label": "Badge 1 Text",
+          "default": "60-Day Money-Back Guarantee"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_text",
+          "label": "Badge 2 Text",
+          "default": "Free Shipping From USA Included"
+        }
+      ]
+    },
+    {
+      "type": "review_snippet",
+      "name": "Review Snippet",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer Avatar"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Margaret Ellison | FL"
+        },
+        {
+          "type": "text",
+          "id": "verified_text",
+          "label": "Verified Text",
+          "default": "Verified Customer"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title",
+          "default": "Even my husband noticed... the spark came back."
+        },
+        {
+          "type": "richtext",
+          "id": "review_body",
+          "label": "Review Body",
+          "default": "<p>After years of hiding under coverups, picking apart my body, and feeling disconnected, I finally feel at ease again. I feel less bloated, lighter, like my body is working with me not against me. These past months, I've been present. Even my marriage feels renewed, not just in how I look but in how I feel. It's hard to explain, but once you try it you'll get it. I'd recommend this to my closest friends without question.</p>"
+        }
+      ]
+    },
+    {
+      "type": "pinfo_accordion",
+      "name": "Custom Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Accordion Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
     }
   ],
   "settings": [
@@ -2266,4 +2738,5 @@
     }
   ]
 }
+
 {% endschema %}
