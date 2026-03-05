@@ -1,0 +1,257 @@
+/* ============================================================
+   BENEFITS BAR + EXPERT ADVICE BOX
+   ============================================================ */
+
+/* ── Benefits Bar (4 icons in a row) ───────────────────────── */
+.benefits-bar {
+  background: #fdf5ee;
+  padding: 40px 20px;
+}
+
+.benefits-bar__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.benefits-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.benefits-bar__icon-wrap {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.benefits-bar__icon-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.benefits-bar__icon-placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+.benefits-bar__title {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111;
+  line-height: 1.35;
+}
+
+.benefits-bar__subtitle {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.45;
+}
+
+/* ── Expert Advice Box ─────────────────────────────────────── */
+.expert-box {
+  max-width: 960px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.expert-box__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f7f4f0;
+  min-height: 420px;
+}
+
+.expert-box__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px 32px;
+  justify-content: center;
+}
+
+.expert-box__date {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.82rem;
+  color: #888;
+  letter-spacing: 0.02em;
+}
+
+.expert-box__heading {
+  margin: 0;
+  font-family: var(--font-heading-family, serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.25;
+}
+
+.expert-box__quote {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.92rem;
+  color: #333;
+  line-height: 1.65;
+}
+
+/* CTA button */
+.expert-box__cta {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 40px;
+  text-align: center;
+  transition: background 0.25s ease, transform 0.15s ease;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.expert-box__cta:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* Guarantee line */
+.expert-box__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.82rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+.expert-box__guarantee-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.expert-box__guarantee svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Expert photo column */
+.expert-box__img-col {
+  position: relative;
+  overflow: hidden;
+}
+
+.expert-box__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.expert-box__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  background: #e8e4de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-body-family, sans-serif);
+}
+
+/* ============================================================
+   MOBILE  (≤ 749px)
+   ============================================================ */
+@media screen and (max-width: 749px) {
+  /* ── Benefits Bar: 2×2 grid ─────────────────────────────── */
+  .benefits-bar {
+    padding: 32px 16px;
+  }
+
+  .benefits-bar__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+  }
+
+  .benefits-bar__title {
+    font-size: 0.9rem;
+  }
+
+  .benefits-bar__subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* ── Expert Box: stacked (image on top) ─────────────────── */
+  .expert-box {
+    margin-top: 0;
+    padding: 0 16px;
+  }
+
+  .expert-box__inner {
+    grid-template-columns: 1fr;
+    border-radius: 12px;
+  }
+
+  /* Image on top */
+  .expert-box__img-col {
+    order: -1;
+    max-height: 400px;
+  }
+
+  .expert-box__photo {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .expert-box__photo-placeholder {
+    min-height: 240px;
+  }
+
+  .expert-box__text-col {
+    padding: 24px 20px 28px;
+    gap: 14px;
+  }
+
+  .expert-box__heading {
+    font-size: 1.35rem;
+  }
+
+  .expert-box__quote {
+    font-size: 0.88rem;
+  }
+
+  .expert-box__cta {
+    align-self: stretch;
+    text-align: center;
+    padding: 14px 24px;
+  }
+
+  .expert-box__guarantee {
+    justify-content: center;
+  }
+}

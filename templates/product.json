@@ -571,6 +571,57 @@
         "padding_bottom": 60
       }
     },
+    "benefits_expert": {
+      "type": "benefits-expert",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_icon",
+          "settings": {
+            "title": "Free Shipping from USA",
+            "subtitle": "On all orders"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_icon",
+          "settings": {
+            "title": "Naturally Supports Your Body",
+            "subtitle": "Promotes healthy immune cell functions"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_icon",
+          "settings": {
+            "title": "100% Natural Ingredients",
+            "subtitle": "8 active, natural ingredients"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_icon",
+          "settings": {
+            "title": "Try it Risk Free for 60 Days",
+            "subtitle": "60-day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "expert_date": "July 4th, 2025",
+        "expert_heading": "Expert Advice from Dr. Emily Chen of a Premier New York Skin Clinic",
+        "expert_quote_1": "\"Your nutrition plays a powerful role in your appearance. If your body is missing key vitamins and nutrients, it can't process fat and upkeep healthy connective tissue, which is why unprocessed fat flows up and starts pushing up against your skin, forming bumps you know as cellulite.",
+        "expert_quote_2": "Lymphatic Drainage by Sculptique™ contains ingredients that are scientifically proven to enhance microcirculation, boost lymphatic drainage, and reduce inflammation, which restores your tissue and breaks down the fat cells in your skin.\"",
+        "cta_text": "Try Lymphatic Drainage Risk-Free",
+        "cta_link": "",
+        "guarantee_text": "60-Day Money-Back Guarantee",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
     "multirow_gVyiGw": {
       "type": "multirow",
       "blocks": {
@@ -675,6 +726,7 @@
     "drainage_section",
     "why_nothing_worked",
     "ingredient_system",
+    "benefits_expert",
     "multirow_gVyiGw",
     "collage_jPbzhP"
   ]
