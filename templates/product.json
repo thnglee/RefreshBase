@@ -114,6 +114,12 @@
     "logo_bar": {
       "type": "logo-bar",
       "blocks": {
+        "logo_XTbaAW": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": ""
+          }
+        },
         "logo_1": {
           "type": "logo",
           "settings": {
@@ -158,6 +164,7 @@
         }
       },
       "block_order": [
+        "logo_XTbaAW",
         "logo_1",
         "logo_2",
         "logo_3",
@@ -241,6 +248,14 @@
             "cause_text": "3-4 liters of lymphatic fluid backing up in tissues daily"
           }
         },
+        "symptom_row_WrUnpz": {
+          "type": "symptom_row",
+          "settings": {
+            "icon": "bloating",
+            "symptom_name": "Bloating & puffiness",
+            "cause_text": "3-4 liters of lymphatic fluid backing up in tissues daily"
+          }
+        },
         "row_legs": {
           "type": "symptom_row",
           "settings": {
@@ -276,6 +291,7 @@
       },
       "block_order": [
         "row_bloating",
+        "symptom_row_WrUnpz",
         "row_legs",
         "row_cellulite",
         "row_brain",
@@ -711,6 +727,7 @@
         "row_gJAddL",
         "row_WMJJMa"
       ],
+      "disabled": true,
       "name": "t:sections.multirow.presets.name",
       "settings": {
         "image_height": "medium",
@@ -754,6 +771,7 @@
         "product_DQyhDG",
         "collection_Dfgytz"
       ],
+      "disabled": true,
       "name": "t:sections.collage.presets.name",
       "settings": {
         "heading": "Multimedia collage",
