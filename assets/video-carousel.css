@@ -136,6 +136,25 @@
   font-family: var(--font-body-family, sans-serif);
 }
 
+/* Video Container */
+.video-carousel__video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 3;
+}
+
+.video-carousel__video-container iframe,
+.video-carousel__video-container video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
+}
+
 /* Play button */
 .video-carousel__play-btn {
   position: absolute;

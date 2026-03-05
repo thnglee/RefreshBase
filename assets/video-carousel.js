@@ -111,6 +111,63 @@
   track.addEventListener('touchmove', pointerMove, { passive: true });
   track.addEventListener('touchend', pointerUp);
 
+  /* ── Video Playback ───────────────────────────────────────── */
+  const playButtons = track.querySelectorAll('.video-carousel__play-btn');
+  let activeVideoContainer = null;
+
+  function stopActiveVideo() {
+    if (!activeVideoContainer) return;
+    
+    const iframe = activeVideoContainer.querySelector('iframe');
+    const video = activeVideoContainer.querySelector('video');
+    
+    if (iframe) {
+      // Reload iframe to stop playing
+      const src = iframe.src;
+      iframe.src = '';
+      iframe.src = src;
+    } else if (video) {
+      video.pause();
+    }
+    
+    activeVideoContainer.style.display = 'none';
+    activeVideoContainer = null;
+  }
+
+  playButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation(); // Prevent drag interference
+      
+      const slide = this.closest('.video-carousel__slide');
+      const videoContainer = slide.querySelector('.video-carousel__video-container');
+      
+      if (!videoContainer) return;
+      
+      // Stop currently playing video
+      if (activeVideoContainer && activeVideoContainer !== videoContainer) {
+        stopActiveVideo();
+      }
+      
+      videoContainer.style.display = 'block';
+      activeVideoContainer = videoContainer;
+      
+      const iframe = videoContainer.querySelector('iframe');
+      const video = videoContainer.querySelector('video');
+      
+      if (iframe) {
+        // Append autoplay parameter if not present
+        let src = iframe.src;
+        if (!src.includes('autoplay=1')) {
+          src += (src.includes('?') ? '&' : '?') + 'autoplay=1';
+          iframe.src = src;
+        }
+      } else if (video) {
+        video.play();
+      }
+    });
+  });
+
   /* ── Init + resize ────────────────────────────────────────── */
   function init() {
     calcLayout();

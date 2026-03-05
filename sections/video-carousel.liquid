@@ -70,6 +70,24 @@
                     <path d="M19 14l14 10-14 10V14z" fill="#fff"/>
                   </svg>
                 </button>
+
+                {%- comment -%} Video container for playback {%- endcomment -%}
+                {%- if block.settings.video_url != blank -%}
+                  <div class="video-carousel__video-container" style="display: none;">
+                    {%- if block.settings.video_url contains 'youtube' or block.settings.video_url contains 'vimeo' -%}
+                      <iframe
+                        src="{{ block.settings.video_url }}"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                      ></iframe>
+                    {%- else -%}
+                      <video playsinline controls>
+                        <source src="{{ block.settings.video_url }}" type="video/mp4">
+                      </video>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               </div>
             </div>
           {%- endif -%}
