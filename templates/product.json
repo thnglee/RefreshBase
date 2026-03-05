@@ -157,6 +157,56 @@
         "padding_bottom": 20
       }
     },
+    "why_symptoms": {
+      "type": "why-symptoms",
+      "blocks": {
+        "symptom_1": {
+          "type": "symptom",
+          "settings": {
+            "caption": "Your stomach is flat in the morning, but by evening you look six months pregnant."
+          }
+        },
+        "symptom_2": {
+          "type": "symptom",
+          "settings": {
+            "caption": "Your ankles disappear into \"kankles\" by the end of the day."
+          }
+        },
+        "symptom_3": {
+          "type": "symptom",
+          "settings": {
+            "caption": "That dimpled, cottage cheese texture on your thighs won't go away no matter what you try."
+          }
+        },
+        "symptom_4": {
+          "type": "symptom",
+          "settings": {
+            "caption": "You feel foggy and exhausted even after a full night's sleep."
+          }
+        },
+        "symptom_5": {
+          "type": "symptom",
+          "settings": {
+            "caption": "You wake up stiff and achy, like your body aged overnight."
+          }
+        }
+      },
+      "block_order": [
+        "symptom_1",
+        "symptom_2",
+        "symptom_3",
+        "symptom_4",
+        "symptom_5"
+      ],
+      "settings": {
+        "highlight_text": "Bloating, Brain Fog & Swollen Legs",
+        "heading_suffix": "Are Actually Connected",
+        "subheading": "If you're experiencing more than one of these symptoms, your body is trying to tell you something:",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -273,6 +323,7 @@
   "order": [
     "main",
     "logo_bar",
+    "why_symptoms",
     "related-products",
     "multirow_gVyiGw",
     "collage_jPbzhP"

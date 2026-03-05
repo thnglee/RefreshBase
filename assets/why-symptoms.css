@@ -1,0 +1,169 @@
+/* ============================================================
+   WHY SYMPTOMS SECTION
+   ============================================================ */
+
+.why-symptoms {
+  background-color: var(--color-background);
+}
+
+.why-symptoms__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 2rem;
+}
+
+/* ---------- HEADER ---------- */
+.why-symptoms__header {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.why-symptoms__heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-foreground);
+  margin: 0 0 1.2rem;
+}
+
+.why-symptoms__heading-highlight {
+  color: #3a8f75; /* teal/green accent matching design */
+  font-style: normal;
+}
+
+.why-symptoms__subheading {
+  font-size: 1.5rem;
+  color: var(--color-foreground);
+  opacity: 0.8;
+  max-width: 60ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =============================================================
+   MOBILE LAYOUT (default — shown on mobile, hidden on desktop)
+   ============================================================= */
+
+.why-symptoms__desktop-grid {
+  display: none; /* hidden on mobile */
+}
+
+.why-symptoms__mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.why-symptoms__mobile-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.6rem;
+  background-color: #f5f5f5;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  min-height: 15rem;
+}
+
+.why-symptoms__mobile-img-wrap {
+  flex: 0 0 48%;
+  max-width: 48%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.why-symptoms__mobile-img-wrap .why-symptoms__img,
+.why-symptoms__mobile-img-wrap .why-symptoms__img-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.why-symptoms__mobile-text {
+  flex: 1;
+  padding: 1.2rem 1.6rem 1.2rem 0;
+}
+
+.why-symptoms__caption {
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: var(--color-foreground);
+  margin: 0;
+  text-align: center;
+}
+
+/* on mobile cards, align left */
+.why-symptoms__mobile-text .why-symptoms__caption {
+  text-align: left;
+  font-size: 1.45rem;
+}
+
+/* =============================================================
+   DESKTOP LAYOUT (≥ 750px) — images row then captions row
+   ============================================================= */
+@media screen and (min-width: 750px) {
+  .why-symptoms__mobile-list {
+    display: none;
+  }
+
+  .why-symptoms__desktop-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Images row */
+  .why-symptoms__images-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  .why-symptoms__img-cell {
+    flex: 1;
+    min-width: 0;
+    border-radius: 0.8rem 0.8rem 0 0;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .why-symptoms__img-cell .why-symptoms__img,
+  .why-symptoms__img-cell .why-symptoms__img-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Captions row */
+  .why-symptoms__captions-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+
+  .why-symptoms__caption-cell {
+    flex: 1;
+    min-width: 0;
+    background-color: #f5f5f5;
+    border-radius: 0.6rem;
+    padding: 1.2rem;
+  }
+
+  .why-symptoms__caption {
+    font-size: 1.4rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+}
+
+/* Placeholder SVG fill */
+.why-symptoms__img-placeholder svg {
+  width: 100%;
+  height: 100%;
+  background: #e8e8e8;
+}

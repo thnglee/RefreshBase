@@ -1,0 +1,198 @@
+{{ 'why-symptoms.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .why-symptoms--{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .why-symptoms--{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="why-symptoms why-symptoms--{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="why-symptoms__inner page-width">
+    <div class="why-symptoms__header">
+      <h2 class="why-symptoms__heading">
+        Why Your <span class="why-symptoms__heading-highlight">{{ section.settings.highlight_text }}</span>
+        {{ section.settings.heading_suffix }}
+      </h2>
+      {%- if section.settings.subheading != blank -%}
+        <p class="why-symptoms__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      {%- comment -%} DESKTOP: images row + captions row {%- endcomment -%}
+      <div class="why-symptoms__desktop-grid">
+        <div class="why-symptoms__images-row">
+          {%- for block in section.blocks -%}
+            <div class="why-symptoms__img-cell" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 400
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'why-symptoms__img',
+                    alt: block.settings.caption,
+                    widths: '200, 300, 400'
+                }}
+              {%- else -%}
+                <div class="why-symptoms__img-placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="why-symptoms__captions-row">
+          {%- for block in section.blocks -%}
+            <div class="why-symptoms__caption-cell">
+              <p class="why-symptoms__caption">{{ block.settings.caption }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} MOBILE: stacked card rows {%- endcomment -%}
+      <div class="why-symptoms__mobile-list">
+        {%- for block in section.blocks -%}
+          <div class="why-symptoms__mobile-card" {{ block.shopify_attributes }}>
+            <div class="why-symptoms__mobile-img-wrap">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 400
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'why-symptoms__img',
+                    alt: block.settings.caption,
+                    widths: '200, 300, 400'
+                }}
+              {%- else -%}
+                <div class="why-symptoms__img-placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+              {%- endif -%}
+            </div>
+            <div class="why-symptoms__mobile-text">
+              <p class="why-symptoms__caption">{{ block.settings.caption }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Symptoms",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlighted text (colored)",
+      "default": "Bloating, Brain Fog & Swollen Legs"
+    },
+    {
+      "type": "text",
+      "id": "heading_suffix",
+      "label": "Heading suffix",
+      "default": "Are Actually Connected"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "If you're experiencing more than one of these symptoms, your body is trying to tell you something:"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "symptom",
+      "name": "Symptom",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "caption",
+          "label": "Caption text",
+          "default": "Your stomach is flat in the morning, but by evening you look six months pregnant."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Symptoms",
+      "blocks": [
+        {
+          "type": "symptom",
+          "settings": {
+            "caption": "Your stomach is flat in the morning, but by evening you look six months pregnant."
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "caption": "Your ankles disappear into \"kankles\" by the end of the day."
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "caption": "That dimpled, cottage cheese texture on your thighs won't go away no matter what you try."
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "caption": "You feel foggy and exhausted even after a full night's sleep."
+          }
+        },
+        {
+          "type": "symptom",
+          "settings": {
+            "caption": "You wake up stiff and achy, like your body aged overnight."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
