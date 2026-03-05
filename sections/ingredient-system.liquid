@@ -1,0 +1,293 @@
+{{ 'ingredient-system.css' | asset_url | stylesheet_tag }}
+
+<section class="ingredient-system" id="ingredient-system">
+  <div class="ingredient-system__inner page-width">
+    {%- comment -%} ======== HEADING ======== {%- endcomment -%}
+    <div class="ingredient-system__header">
+      <h2 class="ingredient-system__title">
+        <span class="ingredient-system__title--green">{{ section.settings.heading_green }}</span>
+        {{ section.settings.heading_black }}
+      </h2>
+      <p class="ingredient-system__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} ======== INGREDIENT GRID ======== {%- endcomment -%}
+    <div class="ingredient-system__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'ingredient' -%}
+          <details class="ingredient-card" {{ block.shopify_attributes }}>
+            <summary class="ingredient-card__summary">
+              <div class="ingredient-card__benefit">
+                <svg class="ingredient-card__check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect width="24" height="24" rx="4" fill="#2a9d5c"/>
+                  <path d="M6 12l4 4 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="ingredient-card__benefit-text">{{ block.settings.benefit_title }}</span>
+              </div>
+
+              <div class="ingredient-card__ingredient-row">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    class="ingredient-card__img"
+                    src="{{ block.settings.image | image_url: width: 120 }}"
+                    alt="{{ block.settings.image.alt | default: block.settings.ingredient_name }}"
+                    width="60"
+                    height="60"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <div class="ingredient-card__img-placeholder"></div>
+                {%- endif -%}
+                <span class="ingredient-card__name">
+                  {{- block.settings.ingredient_name }} ({{ block.settings.dosage }})</span
+                >
+                <svg class="ingredient-card__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </summary>
+
+            <div class="ingredient-card__body">
+              <p>{{ block.settings.description }}</p>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} ======== SYNERGISTIC EFFECT BOX ======== {%- endcomment -%}
+    <div class="ingredient-system__synergy">
+      <h3 class="ingredient-system__synergy-title">{{ section.settings.synergy_heading }}</h3>
+      <p class="ingredient-system__synergy-intro">{{ section.settings.synergy_intro }}</p>
+
+      <ul class="ingredient-system__synergy-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'synergy_item' -%}
+            <li {{ block.shopify_attributes }}>
+              <svg class="ingredient-system__synergy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect width="24" height="24" rx="4" fill="#2a9d5c"/>
+                <path d="M6 12l4 4 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{{ block.settings.text }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <p class="ingredient-system__synergy-closing">{{ section.settings.synergy_closing }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "8-Ingredient System",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_green",
+      "label": "Heading (green part)",
+      "default": "The 8-Ingredient System"
+    },
+    {
+      "type": "text",
+      "id": "heading_black",
+      "label": "Heading (black part)",
+      "default": "That Restores What Hormones Once Maintained"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle text",
+      "default": "Sculptique is the only formula that addresses ALL 6 mechanisms of lymphatic dysfunction simultaneously—not with symbolic doses, but with therapeutic amounts based on clinical research. Not just moving fluid temporarily. Not just reducing inflammation. Complete restoration."
+    },
+    {
+      "type": "header",
+      "content": "Synergistic Effect Box"
+    },
+    {
+      "type": "text",
+      "id": "synergy_heading",
+      "label": "Synergy heading",
+      "default": "The Synergistic Effect"
+    },
+    {
+      "type": "text",
+      "id": "synergy_intro",
+      "label": "Synergy intro text",
+      "default": "Together, these 8 pathways create complete lymphatic restoration:"
+    },
+    {
+      "type": "text",
+      "id": "synergy_closing",
+      "label": "Synergy closing text",
+      "default": "This isn't symptom masking. This is root cause restoration."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_title",
+          "label": "Benefit title",
+          "default": "Reactivate Lymphatic Pumps"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_name",
+          "label": "Ingredient name",
+          "default": "Cleavers Extract"
+        },
+        {
+          "type": "text",
+          "id": "dosage",
+          "label": "Dosage",
+          "default": "100mg"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient image"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description text",
+          "default": "Restores rhythmic vessel contractions that move lymph through your system."
+        }
+      ]
+    },
+    {
+      "type": "synergy_item",
+      "name": "Synergy check item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Vessels pump on their own again."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "8-Ingredient System",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Reactivate Lymphatic Pumps",
+            "ingredient_name": "Cleavers Extract",
+            "dosage": "100mg",
+            "description": "Restores rhythmic vessel contractions that move lymph through your system. Contains iridoids that \"wake up\" muscle cells in vessel walls. 2024 study showed enhanced immune cell activity for better waste clearance. [Study: Enhanced NK cell activity in immunosuppressed models]"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Flush Excess Fluid",
+            "ingredient_name": "Dandelion Extract",
+            "dosage": "250mg",
+            "description": "Proven gentle diuretic that increases fluid excretion without harsh side effects. Human trial showed statistically significant increase in urination frequency (p<0.05) and excretion ratio (p<0.001). [Study: First human pilot study on diuretic effects]"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Break Down Protein Clogs",
+            "ingredient_name": "Bromelain Powder",
+            "dosage": "100mg",
+            "description": "Proteolytic enzyme that breaks down accumulated protein deposits blocking lymphatic vessels. Reduces tissue inflammation and supports natural drainage pathways."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Strengthen Vessel Walls",
+            "ingredient_name": "Rutin",
+            "dosage": "100mg",
+            "description": "Bioflavonoid that reinforces lymphatic vessel wall integrity. Reduces permeability so fluid stays where it belongs instead of leaking into surrounding tissues."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Reduce Inflammation",
+            "ingredient_name": "Burdock Root Powder",
+            "dosage": "200mg",
+            "description": "Powerful anti-inflammatory that calms chronic tissue inflammation caused by lymphatic stagnation. Contains arctigenin shown to modulate inflammatory pathways."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Boost Immune Clearance",
+            "ingredient_name": "Echinacea Purpurea Extract",
+            "dosage": "500mg",
+            "description": "Activates macrophages and natural killer cells to clear debris and pathogens from congested lymphatic pathways. Supports the immune surveillance function of lymph nodes."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Support Metabolism",
+            "ingredient_name": "Kelp Extract",
+            "dosage": "30mg",
+            "description": "Natural source of iodine that supports thyroid function and metabolic rate. Helps the body process and eliminate waste products more efficiently."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "benefit_title": "Antioxidant Protection",
+            "ingredient_name": "Lemon Powder",
+            "dosage": "50mg",
+            "description": "Rich in vitamin C and bioflavonoids that protect lymphatic vessel cells from oxidative damage. Supports collagen production for vessel structural integrity."
+          }
+        },
+        { "type": "synergy_item", "settings": { "text": "Vessels pump on their own again." } },
+        { "type": "synergy_item", "settings": { "text": "Pathways clear of blockages." } },
+        { "type": "synergy_item", "settings": { "text": "Vessel walls strong and sealed." } },
+        { "type": "synergy_item", "settings": { "text": "Immune system efficiently clearing waste." } },
+        { "type": "synergy_item", "settings": { "text": "Inflammation under control." } },
+        { "type": "synergy_item", "settings": { "text": "Metabolism optimized." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
