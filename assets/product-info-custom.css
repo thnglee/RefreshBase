@@ -6,20 +6,22 @@
 .pinfo-trust-bar {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .pinfo-trust-bar__stars {
   display: flex;
   gap: 0.2rem;
   line-height: 1;
+  flex-shrink: 0;
+  width: 100px;
 }
 
 .pinfo-trust-bar__stars svg {
-  width: 1.6rem;
-  height: 1.6rem;
-  fill: #00b67a;      /* Trustpilot green */
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: #00b67a;
   color: #00b67a;
 }
 
@@ -28,10 +30,11 @@
 }
 
 .pinfo-trust-bar__text {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: rgba(var(--color-foreground), 0.8);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(var(--color-foreground));
   margin: 0;
+  line-height: 1.3em;
 }
 
 /* ---- Benefit Icon List ----- */
