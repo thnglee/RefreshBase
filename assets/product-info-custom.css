@@ -398,23 +398,12 @@
 
 @media screen and (max-width: 749px) {
 
-  /* Make the slider-component a positioning context */
-  .product__media-wrapper slider-component {
-    position: relative;
-  }
-
-  /* Hide the default counter/arrow bar that sits BELOW the image */
+  /* ---- Hide the default below-image counter/arrow bar ---- */
   .product__media-wrapper .slider-buttons {
     display: none !important;
   }
 
-  /* ---- Full-width single-image slider (no peek) ---- */
-  .product__media-list .product__media-item {
-    width: 100% !important;
-    scroll-snap-align: center;
-  }
-
-  /* Remove the negative side-margin that creates the peeking effect */
+  /* ---- Remove peek margins — make slider full width ---- */
   .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -422,17 +411,48 @@
 
   .product__media-list {
     margin-left: 0 !important;
+    margin-right: 0 !important;
     margin-bottom: 1.2rem !important;
     width: 100% !important;
-    /* Snap to full image */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    gap: 0 !important;
+    /* Enable snap scrolling */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    /* Prevent flex-shrink from grid--peek collapsing items */
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* ---- Every slide = exactly 100% of the scroll container ---- */
+  .product__media-list .product__media-item,
+  .product__media-list.grid .grid__item,
+  .product__media-list .slider__slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    scroll-snap-align: start !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ---- Make the slider-component a positioning context for overlay arrows ---- */
+  .product__media-wrapper slider-component {
+    position: relative;
+    display: block;
+  }
+
+  /* ---- Hide zoom/magnify icon (image_zoom = none) ---- */
+  .product__media-wrapper .product__media-icon,
+  .product__media-wrapper .product__modal-opener .product__media-icon {
+    display: none !important;
   }
 
   /* ---- Floating prev / next arrow buttons overlaid on image ---- */
   .product__media-wrapper .product-mobile-nav {
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     z-index: 5;
     display: flex;
@@ -447,19 +467,31 @@
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: background 0.2s ease, opacity 0.2s ease;
+    transition: background 0.2s ease;
   }
 
   .product__media-wrapper .product-mobile-nav:hover {
     background: rgba(255, 255, 255, 1);
   }
 
+  /* Position: prev on left, next on right */
   .product__media-wrapper .product-mobile-nav--prev {
     left: 1rem;
   }
 
   .product__media-wrapper .product-mobile-nav--next {
     right: 1rem;
+  }
+
+  /* Rotate the down-pointing caret: left for prev, right for next */
+  .product__media-wrapper .product-mobile-nav--prev .svg-wrapper {
+    display: flex;
+    transform: rotate(90deg);
+  }
+
+  .product__media-wrapper .product-mobile-nav--next .svg-wrapper {
+    display: flex;
+    transform: rotate(-90deg);
   }
 
   .product__media-wrapper .product-mobile-nav svg {
