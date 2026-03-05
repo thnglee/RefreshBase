@@ -207,3 +207,186 @@
 .product__info-container .pinfo-trust-bar + .product__title {
   margin-top: 0.4rem;
 }
+
+/* ============================================================
+   Review Card
+   ============================================================ */
+
+.pinfo-review-card {
+  background: #f5f3ec;
+  border-radius: 1.2rem;
+  padding: 1.4rem;
+  margin: 0.4rem 0 1.6rem;
+}
+
+.pinfo-review-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.pinfo-review-avatar {
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #d5cfc0;
+  border: 0.2rem solid #c5bfb0;
+}
+
+.pinfo-review-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pinfo-review-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pinfo-review-name {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgb(var(--color-foreground));
+}
+
+.pinfo-review-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.2rem;
+  color: #2a9d5c;
+  font-weight: 500;
+}
+
+.pinfo-review-verified svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: #2a9d5c;
+}
+
+.pinfo-review-stars {
+  display: flex;
+  gap: 0.2rem;
+  line-height: 1;
+}
+
+.pinfo-review-stars svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #f5a623;
+}
+
+.pinfo-review-title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem;
+  color: rgb(var(--color-foreground));
+}
+
+.pinfo-review-body {
+  font-size: 1.3rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.78);
+  margin: 0;
+}
+
+/* ============================================================
+   Accordion / FAQ Dropdowns
+   ============================================================ */
+
+.pinfo-accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.pinfo-accordion {
+  border: 0.15rem solid #3aaf72;
+  border-radius: 1.2rem;
+  background: #f8f7f4;
+  overflow: hidden;
+}
+
+.pinfo-accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 1.4rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgb(var(--color-foreground));
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pinfo-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.pinfo-accordion__icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.15rem solid #3aaf72;
+  color: #3aaf72;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* + when closed */
+.pinfo-accordion:not([open]) .pinfo-accordion__icon::before {
+  content: '+';
+}
+
+/* × when open */
+.pinfo-accordion[open] .pinfo-accordion__icon::before {
+  content: '×';
+}
+
+.pinfo-accordion__body {
+  padding: 0 1.4rem 1.4rem;
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: rgba(var(--color-foreground), 0.82);
+  border-top: 0.1rem solid rgba(58, 175, 114, 0.2);
+  padding-top: 1rem;
+}
+
+.pinfo-accordion__body p {
+  margin: 0 0 0.8rem;
+}
+
+.pinfo-accordion__body p:last-child {
+  margin-bottom: 0;
+}
+
+.pinfo-accordion__body ul {
+  margin: 0.4rem 0 0.8rem 1.2rem;
+  padding: 0;
+}
+
+.pinfo-accordion__body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.pinfo-accordion__body strong {
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
