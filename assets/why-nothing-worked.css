@@ -1,0 +1,283 @@
+/* ============================================================
+   WHY NOTHING HAS WORKED SECTION
+   ============================================================ */
+
+.wnw-section {
+  background: #f8f5f0;
+  padding: 60px 0;
+  overflow-x: hidden;
+}
+
+.wnw-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Heading ─────────────────────────────────────────────── */
+.wnw-heading {
+  font-family: var(--font-heading-family, serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin: 0 0 40px;
+  line-height: 1.25;
+}
+
+.wnw-heading em {
+  font-style: italic;
+  color: #2a9d5c;
+}
+
+/* ── 3 Cards Grid ──────────────────────────────────────── */
+.wnw-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+/* ── Single Card ───────────────────────────────────────── */
+.wnw-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Image wrapper */
+.wnw-card__img-wrap {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  aspect-ratio: 1 / 1;
+  background: #e5e5e5;
+}
+
+.wnw-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+}
+
+/* Caption under the image */
+.wnw-card__caption {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  color: #222;
+  line-height: 1.55;
+  margin: 0 0 14px;
+  padding: 0 4px;
+}
+
+/* Pink fail box */
+.wnw-card__fail-box {
+  background: #fdf2f2;
+  border-radius: 10px;
+  padding: 16px 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wnw-card__fail-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c0392b;
+  margin: 0 0 8px;
+}
+
+.wnw-x-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.wnw-card__fail-text {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ── Placeholder ───────────────────────────────────────── */
+.wnw-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-body-family, sans-serif);
+  box-sizing: border-box;
+}
+
+/* ── Decorative curly arrows ────────────────────────────── */
+.wnw-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 10px;
+}
+
+.wnw-arrow {
+  opacity: 0.55;
+}
+
+/* ── The Missing Piece callout ──────────────────────────── */
+.wnw-missing-piece {
+  border: 2px solid #2a9d5c;
+  border-radius: 12px;
+  padding: 28px 32px;
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+  margin-bottom: 28px;
+  background: rgba(42, 157, 92, 0.04);
+}
+
+.wnw-missing-piece__heading {
+  font-family: var(--font-heading-family, serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 12px;
+}
+
+.wnw-missing-piece__text {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── CTA Button ─────────────────────────────────────────── */
+.wnw-cta-btn {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 40px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.wnw-cta-btn:hover {
+  background: #333;
+}
+
+/* ── Guarantee line ─────────────────────────────────────── */
+.wnw-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
+
+.wnw-guarantee__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #555;
+}
+
+/* ============================================================
+   MOBILE  (≤ 749px)
+   ============================================================ */
+@media screen and (max-width: 749px) {
+  .wnw-section {
+    padding: 48px 0;
+  }
+
+  .wnw-inner {
+    padding: 0 16px;
+  }
+
+  .wnw-heading {
+    font-size: 1.55rem;
+    margin-bottom: 28px;
+  }
+
+  /* Stack cards vertically on mobile */
+  .wnw-cards {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .wnw-card__img-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .wnw-card__caption {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .wnw-card__fail-box {
+    padding: 18px 20px;
+  }
+
+  .wnw-card__fail-label {
+    font-size: 0.95rem;
+  }
+
+  .wnw-card__fail-text {
+    font-size: 0.9rem;
+  }
+
+  /* Hide desktop curly arrows on mobile */
+  .wnw-arrows {
+    display: none;
+  }
+
+  /* Missing piece */
+  .wnw-missing-piece {
+    padding: 24px 20px;
+    margin-bottom: 24px;
+  }
+
+  .wnw-missing-piece__heading {
+    font-size: 1.3rem;
+  }
+
+  .wnw-missing-piece__text {
+    font-size: 0.9rem;
+  }
+
+  /* CTA */
+  .wnw-cta-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 24px;
+  }
+}

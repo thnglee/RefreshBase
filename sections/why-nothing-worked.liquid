@@ -1,0 +1,319 @@
+{{ 'why-nothing-worked.css' | asset_url | stylesheet_tag }}
+
+<section class="wnw-section" id="why-nothing-worked">
+  <div class="wnw-inner">
+    {%- comment -%} ══════ Heading ══════ {%- endcomment -%}
+    <h2 class="wnw-heading">
+      {{ section.settings.heading_prefix }}
+      <em>{{ section.settings.heading_highlight }}</em>
+    </h2>
+
+    {%- comment -%} ══════ 3 Failure Cards ══════ {%- endcomment -%}
+    <div class="wnw-cards">
+      {%- comment -%} Card 1 {%- endcomment -%}
+      <div class="wnw-card">
+        <div class="wnw-card__img-wrap">
+          {%- if section.settings.card1_image != blank -%}
+            <img
+              src="{{ section.settings.card1_image | image_url: width: 600 }}"
+              alt="{{ section.settings.card1_image.alt | default: 'Diet attempt' }}"
+              width="600"
+              height="{{ 600 | divided_by: section.settings.card1_image.aspect_ratio | round }}"
+              loading="lazy"
+              class="wnw-card__img"
+            >
+          {%- else -%}
+            <div class="wnw-placeholder"><span>Image — select in theme editor</span></div>
+          {%- endif -%}
+        </div>
+
+        <p class="wnw-card__caption">{{ section.settings.card1_caption }}</p>
+
+        <div class="wnw-card__fail-box">
+          <p class="wnw-card__fail-label">
+            {{ section.settings.card1_fail_label }}
+            <svg class="wnw-x-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6l-12 12" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </p>
+          <p class="wnw-card__fail-text">{{ section.settings.card1_fail_text }}</p>
+        </div>
+      </div>
+
+      {%- comment -%} Card 2 {%- endcomment -%}
+      <div class="wnw-card">
+        <div class="wnw-card__img-wrap">
+          {%- if section.settings.card2_image != blank -%}
+            <img
+              src="{{ section.settings.card2_image | image_url: width: 600 }}"
+              alt="{{ section.settings.card2_image.alt | default: 'Lymphatic drops' }}"
+              width="600"
+              height="{{ 600 | divided_by: section.settings.card2_image.aspect_ratio | round }}"
+              loading="lazy"
+              class="wnw-card__img"
+            >
+          {%- else -%}
+            <div class="wnw-placeholder"><span>Image — select in theme editor</span></div>
+          {%- endif -%}
+        </div>
+
+        <p class="wnw-card__caption">{{ section.settings.card2_caption }}</p>
+
+        <div class="wnw-card__fail-box">
+          <p class="wnw-card__fail-label">
+            {{ section.settings.card2_fail_label }}
+            <svg class="wnw-x-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6l-12 12" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </p>
+          <p class="wnw-card__fail-text">{{ section.settings.card2_fail_text }}</p>
+        </div>
+      </div>
+
+      {%- comment -%} Card 3 {%- endcomment -%}
+      <div class="wnw-card">
+        <div class="wnw-card__img-wrap">
+          {%- if section.settings.card3_image != blank -%}
+            <img
+              src="{{ section.settings.card3_image | image_url: width: 600 }}"
+              alt="{{ section.settings.card3_image.alt | default: 'Massage attempt' }}"
+              width="600"
+              height="{{ 600 | divided_by: section.settings.card3_image.aspect_ratio | round }}"
+              loading="lazy"
+              class="wnw-card__img"
+            >
+          {%- else -%}
+            <div class="wnw-placeholder"><span>Image — select in theme editor</span></div>
+          {%- endif -%}
+        </div>
+
+        <p class="wnw-card__caption">{{ section.settings.card3_caption }}</p>
+
+        <div class="wnw-card__fail-box">
+          <p class="wnw-card__fail-label">
+            {{ section.settings.card3_fail_label }}
+            <svg class="wnw-x-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6l-12 12" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </p>
+          <p class="wnw-card__fail-text">{{ section.settings.card3_fail_text }}</p>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} ══════ Curly arrows (decorative) ══════ {%- endcomment -%}
+    <div class="wnw-arrows" aria-hidden="true">
+      <svg class="wnw-arrow wnw-arrow--left" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <path d="M20 5 C10 5, 5 15, 12 25 C14 28, 18 32, 20 35" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M16 32 L20 35 L23 31" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <svg class="wnw-arrow wnw-arrow--right" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <path d="M20 5 C30 5, 35 15, 28 25 C26 28, 22 32, 20 35" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M24 32 L20 35 L17 31" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    {%- comment -%} ══════ The Missing Piece — callout ══════ {%- endcomment -%}
+    <div class="wnw-missing-piece">
+      <h3 class="wnw-missing-piece__heading">{{ section.settings.missing_heading }}</h3>
+      <p class="wnw-missing-piece__text">{{ section.settings.missing_text }}</p>
+    </div>
+
+    {%- comment -%} ══════ CTA Button ══════ {%- endcomment -%}
+    <a href="{{ section.settings.cta_link }}" class="wnw-cta-btn">
+      {{ section.settings.cta_text }}
+    </a>
+
+    {%- comment -%} ══════ Guarantee line ══════ {%- endcomment -%}
+    <p class="wnw-guarantee">
+      <svg class="wnw-guarantee__icon" viewBox="0 0 24 24" fill="none">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      {{ section.settings.guarantee_text }}
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Nothing Worked",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading text",
+      "default": "Why Nothing Has"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading highlight (italic)",
+      "default": "Worked"
+    },
+
+    {
+      "type": "header",
+      "content": "Card 1 — Diet"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_image",
+      "label": "Card 1 image"
+    },
+    {
+      "type": "text",
+      "id": "card1_caption",
+      "label": "Card 1 caption",
+      "default": "You cut out gluten, dairy, sugar. You ate clean for months."
+    },
+    {
+      "type": "text",
+      "id": "card1_fail_label",
+      "label": "Card 1 fail label",
+      "default": "Why it failed"
+    },
+    {
+      "type": "textarea",
+      "id": "card1_fail_text",
+      "label": "Card 1 fail explanation",
+      "default": "Your diet only addressed what goes IN. It didn't fix your body's broken ability to drain what's already there."
+    },
+
+    {
+      "type": "header",
+      "content": "Card 2 — Drops"
+    },
+    {
+      "type": "image_picker",
+      "id": "card2_image",
+      "label": "Card 2 image"
+    },
+    {
+      "type": "text",
+      "id": "card2_caption",
+      "label": "Card 2 caption",
+      "default": "You tried viral lymphatic drops from TikTok."
+    },
+    {
+      "type": "text",
+      "id": "card2_fail_label",
+      "label": "Card 2 fail label",
+      "default": "Why it failed"
+    },
+    {
+      "type": "textarea",
+      "id": "card2_fail_text",
+      "label": "Card 2 fail explanation",
+      "default": "They're just pricey water with trace herbs. The \"active ingredients\" are destroyed by stomach acid, and even if absorbed, only act as a mild diuretic. No vessel repair, no protein breakdown—just expensive urine."
+    },
+
+    {
+      "type": "header",
+      "content": "Card 3 — Massage"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3_image",
+      "label": "Card 3 image"
+    },
+    {
+      "type": "text",
+      "id": "card3_caption",
+      "label": "Card 3 caption",
+      "default": "You got lymphatic massage or bought compression socks."
+    },
+    {
+      "type": "text",
+      "id": "card3_fail_label",
+      "label": "Card 3 fail label",
+      "default": "Why it failed"
+    },
+    {
+      "type": "textarea",
+      "id": "card3_fail_text",
+      "label": "Card 3 fail explanation",
+      "default": "Temporary manual movement. Within 24-48 hours, everything backed up again because your vessels still can't pump on their own."
+    },
+
+    {
+      "type": "header",
+      "content": "The Missing Piece"
+    },
+    {
+      "type": "text",
+      "id": "missing_heading",
+      "label": "Missing piece heading",
+      "default": "The Missing Piece:"
+    },
+    {
+      "type": "textarea",
+      "id": "missing_text",
+      "label": "Missing piece text",
+      "default": "Comprehensive lymphatic restoration that addresses vessel pumping, protein blockages, vessel wall integrity, immune clearance, inflammation, and metabolism—all at once."
+    },
+
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Try Lymphatic Drainage Risk-Free"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "60 day money-back guarantee"
+    },
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Nothing Worked"
+    }
+  ]
+}
+{% endschema %}
