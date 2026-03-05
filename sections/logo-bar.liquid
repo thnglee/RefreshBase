@@ -1,0 +1,158 @@
+{{ 'logo-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .logo-bar--{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .logo-bar--{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.show_section -%}
+  <div class="logo-bar logo-bar--{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+    {%- if section.settings.heading != blank -%}
+      <p class="logo-bar__heading">{{ section.settings.heading | escape }}</p>
+    {%- endif -%}
+
+    <div class="logo-bar__marquee-outer" aria-label="{{ section.settings.heading | default: 'As seen in' | escape }}">
+      <div
+        class="logo-bar__marquee-track"
+        style="--logo-bar-speed: {{ section.settings.speed }}s;"
+        aria-hidden="true"
+      >
+        {%- comment -%}Render twice for seamless infinite scroll{%- endcomment -%}
+        {%- for _pass in (1..2) -%}
+          <ul class="logo-bar__list" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.logo != blank -%}
+                {%- assign logo_alt = block.settings.logo_alt | default: block.settings.logo.alt | escape -%}
+                {%- assign logo_style = 'max-height:' | append: section.settings.logo_height | append: 'px' -%}
+                <li class="logo-bar__item" {{ block.shopify_attributes }}>
+                  {{
+                    block.settings.logo
+                    | image_url: width: 400
+                    | image_tag:
+                      loading: 'lazy',
+                      class: 'logo-bar__logo',
+                      alt: logo_alt,
+                      widths: '160, 240, 320, 400',
+                      style: logo_style
+                  }}
+                </li>
+              {%- elsif request.design_mode -%}
+                <li class="logo-bar__item logo-bar__item--placeholder" {{ block.shopify_attributes }}>
+                  <span class="logo-bar__placeholder-label">Add a logo</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Logo Bar",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "As Seen In"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" },
+        { "value": "scheme-4", "label": "Scheme 4" }
+      ],
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds, lower = faster)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Logo alt text",
+          "info": "Defaults to image alt text if left blank"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Bar",
+      "blocks": [{ "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" }]
+    }
+  ]
+}
+{% endschema %}
