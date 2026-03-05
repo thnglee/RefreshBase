@@ -34,7 +34,7 @@
 
 /* ── Body text ───────────────────────────────────────────── */
 .drainage-body {
-  font-family: var(--font-body-family, sans-serif);
+  font-family: var(--font-times, Times, 'Times New Roman', serif);
   font-size: 1rem;
   color: #222;
   line-height: 1.65;

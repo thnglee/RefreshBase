@@ -11,9 +11,9 @@
   "current": {
     "logo": "shopify://shop_images/afterpay2.svg",
     "logo_width": 140,
-    "type_header_font": "archivo_n7",
+    "type_header_font": "montserrat_n7",
     "heading_scale": 110,
-    "type_body_font": "questrial_n4",
+    "type_body_font": "nunito_n4",
     "body_scale": 105,
     "page_width": 1200,
     "spacing_sections": 0,
@@ -260,9 +260,9 @@
           }
         }
       },
-      "type_header_font": "archivo_n7",
+      "type_header_font": "montserrat_n7",
       "heading_scale": 110,
-      "type_body_font": "questrial_n4",
+      "type_body_font": "nunito_n4",
       "body_scale": 105,
       "page_width": 1200,
       "spacing_sections": 0,
