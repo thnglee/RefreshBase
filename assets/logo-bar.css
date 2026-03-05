@@ -5,7 +5,6 @@
 .logo-bar {
   width: 100%;
   overflow: hidden;
-  padding: var(--logo-bar-padding-top, 20px) 0 var(--logo-bar-padding-bottom, 20px);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -13,28 +12,29 @@
 /* ---- Heading ---- */
 .logo-bar__heading {
   text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-foreground, #3d3d3d);
-  opacity: 0.55;
-  margin: 0 0 1.2rem;
+  opacity: 0.5;
+  margin: 0 0 1rem;
   padding: 0 1.6rem;
 }
 
-/* ---- Outer mask with fade edges ---- */
+/* ---- Outer container — clips overflow and adds fade edges ---- */
 .logo-bar__marquee-outer {
   position: relative;
   overflow: hidden;
 }
 
+/* Fade edges */
 .logo-bar__marquee-outer::before,
 .logo-bar__marquee-outer::after {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 8rem;
+  width: 6rem;
   z-index: 2;
   pointer-events: none;
 }
@@ -49,35 +49,21 @@
   background: linear-gradient(to left, var(--color-background, #fff) 0%, transparent 100%);
 }
 
-/* ---- Marquee track ---- */
+/* ---- Marquee track — built and animated by JS ---- */
 .logo-bar__marquee-track {
   display: flex;
   width: max-content;
-  animation: logo-bar-scroll var(--logo-bar-speed, 25s) linear infinite;
+  will-change: transform;
 }
 
-/* Pause on hover for accessibility / usability */
-.logo-bar__marquee-outer:hover .logo-bar__marquee-track {
-  animation-play-state: paused;
-}
-
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .logo-bar__marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-}
-
-/* ---- List ---- */
+/* ---- Logo list ---- */
 .logo-bar__list {
   display: flex;
   align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 
 /* ---- Individual logo item ---- */
@@ -86,18 +72,18 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 0 3.2rem;
+  padding: 0 3rem;
 }
 
 /* ---- Logo image ---- */
 .logo-bar__logo {
   display: block;
   width: auto;
-  height: auto;       /* actual height controlled via inline style per image */
+  height: auto;
   max-width: 160px;
   object-fit: contain;
-  filter: grayscale(100%) brightness(0.6);
-  opacity: 0.75;
+  filter: grayscale(100%) brightness(0.55);
+  opacity: 0.8;
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
@@ -112,18 +98,28 @@
   border: 2px dashed rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   min-width: 120px;
-  height: 48px;
+  min-height: 44px;
+  justify-content: center;
 }
 
 .logo-bar__placeholder-label {
-  font-size: 0.75rem;
-  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.35);
   padding: 0 1rem;
   white-space: nowrap;
 }
 
-/* ---- Keyframe animation ---- */
-@keyframes logo-bar-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* ---- Reduced-motion fallback: show as a static centred row ---- */
+@media (prefers-reduced-motion: reduce) {
+  .logo-bar__marquee-outer {
+    overflow: hidden;
+  }
+  .logo-bar__list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* Hide duplicate clone lists */
+  .logo-bar__list ~ .logo-bar__list {
+    display: none;
+  }
 }

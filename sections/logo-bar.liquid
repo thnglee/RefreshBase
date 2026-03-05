@@ -19,42 +19,122 @@
       <p class="logo-bar__heading">{{ section.settings.heading | escape }}</p>
     {%- endif -%}
 
-    <div class="logo-bar__marquee-outer" aria-label="{{ section.settings.heading | default: 'As seen in' | escape }}">
-      <div
-        class="logo-bar__marquee-track"
-        style="--logo-bar-speed: {{ section.settings.speed }}s;"
-        aria-hidden="true"
-      >
-        {%- comment -%}Render twice for seamless infinite scroll{%- endcomment -%}
-        {%- for _pass in (1..2) -%}
-          <ul class="logo-bar__list" role="list">
-            {%- for block in section.blocks -%}
-              {%- if block.settings.logo != blank -%}
-                {%- assign logo_alt = block.settings.logo_alt | default: block.settings.logo.alt | escape -%}
-                {%- assign logo_style = 'max-height:' | append: section.settings.logo_height | append: 'px' -%}
-                <li class="logo-bar__item" {{ block.shopify_attributes }}>
-                  {{
-                    block.settings.logo
-                    | image_url: width: 400
-                    | image_tag:
-                      loading: 'lazy',
-                      class: 'logo-bar__logo',
-                      alt: logo_alt,
-                      widths: '160, 240, 320, 400',
-                      style: logo_style
-                  }}
-                </li>
-              {%- elsif request.design_mode -%}
-                <li class="logo-bar__item logo-bar__item--placeholder" {{ block.shopify_attributes }}>
-                  <span class="logo-bar__placeholder-label">Add a logo</span>
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
+    <div
+      class="logo-bar__marquee-outer"
+      data-speed="{{ section.settings.speed }}"
+      aria-label="{{ section.settings.heading | default: 'As seen in' | escape }}"
+    >
+      {%- comment -%}
+        One canonical <ul> — JS will clone it as many times as needed to
+        guarantee a gap-free seamless loop regardless of screen width.
+      {%- endcomment -%}
+      <ul class="logo-bar__list" role="list">
+        {%- assign has_logos = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.logo != blank -%}
+            {%- assign has_logos = true -%}
+            {%- assign logo_alt = block.settings.logo_alt | default: block.settings.logo.alt | escape -%}
+            {%- assign logo_style = 'max-height:' | append: section.settings.logo_height | append: 'px' -%}
+            <li class="logo-bar__item" {{ block.shopify_attributes }}>
+              {{
+                block.settings.logo
+                | image_url: width: 400
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'logo-bar__logo',
+                  alt: logo_alt,
+                  widths: '160, 240, 320, 400',
+                  style: logo_style
+              }}
+            </li>
+          {%- elsif request.design_mode -%}
+            <li class="logo-bar__item logo-bar__item--placeholder" {{ block.shopify_attributes }}>
+              <span class="logo-bar__placeholder-label">Add a logo</span>
+            </li>
+          {%- endif -%}
         {%- endfor -%}
-      </div>
+
+        {%- if section.blocks.size == 0 and request.design_mode -%}
+          <li class="logo-bar__item logo-bar__item--placeholder">
+            <span class="logo-bar__placeholder-label">Add logo blocks in the editor →</span>
+          </li>
+        {%- endif -%}
+      </ul>
     </div>
   </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function initLogoBar(outerEl) {
+        // Respect prefers-reduced-motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var speed = parseFloat(outerEl.dataset.speed) || 25; // seconds for one full list-width
+        var origList = outerEl.querySelector('.logo-bar__list');
+        if (!origList) return;
+
+        // Wait one frame so images have a chance to load and layout is stable
+        requestAnimationFrame(function () {
+          var listW = origList.offsetWidth;
+          if (listW === 0) return; // nothing to animate
+
+          // We need enough copies so total track width > 2× viewport
+          var minTrackWidth = window.innerWidth * 2;
+          var copiesNeeded = Math.max(2, Math.ceil(minTrackWidth / listW) + 1);
+
+          // Build a wrapper around all copies (the "track")
+          var track = document.createElement('div');
+          track.className = 'logo-bar__marquee-track';
+
+          // Move the original list into the track
+          outerEl.appendChild(track);
+          track.appendChild(origList);
+
+          // Add clones
+          for (var i = 1; i < copiesNeeded; i++) {
+            var clone = origList.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            // Remove shopify editor attributes from clones to avoid confusion
+            clone.querySelectorAll('[data-shopify-editor-block]').forEach(function (el) {
+              el.removeAttribute('data-shopify-editor-block');
+            });
+            track.appendChild(clone);
+          }
+
+          // Now animate: move left by exactly one list width → seamless jump back to 0
+          var duration = speed; // seconds per list width
+          var keyframes = [{ transform: 'translateX(0)' }, { transform: 'translateX(-' + listW + 'px)' }];
+          var options = {
+            duration: duration * 1000,
+            iterations: Infinity,
+            easing: 'linear',
+          };
+
+          var anim = track.animate(keyframes, options);
+
+          // Pause on hover
+          outerEl.addEventListener('mouseenter', function () {
+            anim.pause();
+          });
+          outerEl.addEventListener('mouseleave', function () {
+            anim.play();
+          });
+        });
+      }
+
+      function init() {
+        document.querySelectorAll('.logo-bar__marquee-outer').forEach(initLogoBar);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 {%- endif -%}
 
 {% schema %}
@@ -100,11 +180,11 @@
     {
       "type": "range",
       "id": "speed",
-      "label": "Scroll speed (seconds, lower = faster)",
-      "min": 10,
+      "label": "Scroll speed (seconds per loop, lower = faster)",
+      "min": 5,
       "max": 60,
       "step": 5,
-      "default": 25
+      "default": 20
     },
     {
       "type": "header",
