@@ -390,3 +390,110 @@
   font-weight: 600;
   color: rgb(var(--color-foreground));
 }
+
+/* ============================================================
+   Mobile Image Carousel — Overlay Arrows + Thumbnail Strip
+   (matches Image 3 reference: arrows on image sides, thumbs below)
+   ============================================================ */
+
+@media screen and (max-width: 749px) {
+
+  /* Make the slider-component a positioning context */
+  .product__media-wrapper slider-component {
+    position: relative;
+  }
+
+  /* Hide the default counter/arrow bar that sits BELOW the image */
+  .product__media-wrapper .slider-buttons {
+    display: none !important;
+  }
+
+  /* ---- Full-width single-image slider (no peek) ---- */
+  .product__media-list .product__media-item {
+    width: 100% !important;
+    scroll-snap-align: center;
+  }
+
+  /* Remove the negative side-margin that creates the peeking effect */
+  .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .product__media-list {
+    margin-left: 0 !important;
+    margin-bottom: 1.2rem !important;
+    width: 100% !important;
+    /* Snap to full image */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ---- Floating prev / next arrow buttons overlaid on image ---- */
+  .product__media-wrapper .product-mobile-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, opacity 0.2s ease;
+  }
+
+  .product__media-wrapper .product-mobile-nav:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .product__media-wrapper .product-mobile-nav--prev {
+    left: 1rem;
+  }
+
+  .product__media-wrapper .product-mobile-nav--next {
+    right: 1rem;
+  }
+
+  .product__media-wrapper .product-mobile-nav svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* ---- Thumbnail strip below image ---- */
+  .thumbnail-slider {
+    margin-top: 0.8rem;
+  }
+
+  .thumbnail-list {
+    gap: 0.6rem;
+    padding: 0 0.4rem;
+  }
+
+  .thumbnail-list__item .thumbnail {
+    width: 7.2rem;
+    height: 7.2rem;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    border: 0.2rem solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .thumbnail-list__item .thumbnail[aria-current='true'] {
+    border-color: rgb(var(--color-foreground));
+  }
+
+  .thumbnail-list__item .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+

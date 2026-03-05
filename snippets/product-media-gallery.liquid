@@ -125,6 +125,29 @@
         {%- endunless -%}
       {%- endfor -%}
     </ul>
+
+    {%- comment -%}Mobile-only overlay arrows — shown on top of the image{%- endcomment -%}
+    <button
+      type="button"
+      class="product-mobile-nav product-mobile-nav--prev medium-hide large-up-hide"
+      name="previous"
+      aria-label="{{ 'general.slider.previous_slide' | t }}"
+    >
+      <span class="svg-wrapper">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </button>
+    <button
+      type="button"
+      class="product-mobile-nav product-mobile-nav--next medium-hide large-up-hide"
+      name="next"
+      aria-label="{{ 'general.slider.next_slide' | t }}"
+    >
+      <span class="svg-wrapper">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </button>
+
     <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
       <button
         type="button"
