@@ -291,6 +291,72 @@
         "padding_bottom": 60
       }
     },
+    "drainage_section": {
+      "type": "drainage-section",
+      "blocks": {
+        "green_1": {
+          "type": "green_check",
+          "settings": { "text": "Waste gets drained away" }
+        },
+        "green_2": {
+          "type": "green_check",
+          "settings": { "text": "Fluid stays balanced." }
+        },
+        "green_3": {
+          "type": "green_check",
+          "settings": { "text": "Your body feels light and energized." }
+        },
+        "red_1": {
+          "type": "red_cross",
+          "settings": { "text": "Vessel pumping weakens." }
+        },
+        "red_2": {
+          "type": "red_cross",
+          "settings": { "text": "One-way valves fail." }
+        },
+        "red_3": {
+          "type": "red_cross",
+          "settings": { "text": "Protein clogs form." }
+        },
+        "red_4": {
+          "type": "red_cross",
+          "settings": { "text": "Vessel walls become leaky." }
+        },
+        "why_1": {
+          "type": "thats_why",
+          "settings": { "text": "That's why you're bloated." }
+        },
+        "why_2": {
+          "type": "thats_why",
+          "settings": { "text": "That's why your ankles swell." }
+        },
+        "why_3": {
+          "type": "thats_why",
+          "settings": { "text": "That's why you see cellulite." }
+        },
+        "why_4": {
+          "type": "thats_why",
+          "settings": { "text": "That's why you feel exhausted and foggy." }
+        }
+      },
+      "block_order": [
+        "green_1",
+        "green_2",
+        "green_3",
+        "red_1",
+        "red_2",
+        "red_3",
+        "red_4",
+        "why_1",
+        "why_2",
+        "why_3",
+        "why_4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
     "multirow_gVyiGw": {
       "type": "multirow",
       "blocks": {
@@ -392,6 +458,7 @@
     "logo_bar",
     "why_symptoms",
     "connection_section",
+    "drainage_section",
     "multirow_gVyiGw",
     "collage_jPbzhP"
   ]

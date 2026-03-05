@@ -1,0 +1,211 @@
+/* ============================================================
+   DRAINAGE SYSTEM SECTION
+   ============================================================ */
+
+.drainage-section {
+  background: #fff;
+  padding: var(--drainage-pt, 0px) 0 var(--drainage-pb, 60px);
+}
+
+.drainage-section__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* ── Two-column part layout ─────────────────────────────── */
+.drainage-part {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── Text columns ────────────────────────────────────────── */
+.drainage-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Body text ───────────────────────────────────────────── */
+.drainage-body {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.drainage-body strong {
+  font-weight: 700;
+  color: #111;
+}
+
+.drainage-body--sub {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.drainage-body--italic {
+  font-style: italic;
+  color: #444;
+}
+
+.drainage-body--bold-intro {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #111;
+}
+
+/* ── Green check list ────────────────────────────────────── */
+.drainage-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drainage-check-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.drainage-check-list li svg {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+}
+
+/* Green list */
+.drainage-check-list--green li span {
+  color: #1a6b3c;
+  font-weight: 600;
+}
+
+/* Red list */
+.drainage-check-list--red li span {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* ── Callout boxes ───────────────────────────────────────── */
+.drainage-callout {
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 4px 0;
+}
+
+.drainage-callout p {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.drainage-callout--beige {
+  background: #fdf5ee;
+  border-left: 4px solid #e8c89a;
+}
+
+.drainage-callout--pink {
+  background: #fdf2f2;
+  border-left: 4px solid #e8a0a0;
+}
+
+.drainage-callout .drainage-check-list {
+  margin-top: 14px;
+}
+
+/* ── Image columns ───────────────────────────────────────── */
+.drainage-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drainage-chart-img,
+.drainage-anatomy-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+/* ── Placeholder for empty image_picker ──────────────────── */
+.drainage-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-body-family, sans-serif);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media screen and (max-width: 749px) {
+  .drainage-section__inner {
+    gap: 40px;
+  }
+
+  .drainage-part {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* On mobile, chart image comes FIRST (above text) */
+  .drainage-part--intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drainage-part--intro .drainage-img-col--chart {
+    order: -1;
+  }
+
+  /* Anatomy images stay on top on mobile too */
+  .drainage-part--accumulation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drainage-body {
+    font-size: 0.95rem;
+  }
+
+  .drainage-body--bold-intro {
+    font-size: 1rem;
+  }
+
+  .drainage-check-list li {
+    font-size: 0.9rem;
+  }
+
+  .drainage-callout {
+    padding: 16px 18px;
+  }
+
+  .drainage-callout p {
+    font-size: 0.9rem;
+  }
+}

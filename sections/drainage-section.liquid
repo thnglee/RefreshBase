@@ -1,0 +1,277 @@
+{{ 'drainage-section.css' | asset_url | stylesheet_tag }}
+
+<section class="drainage-section" id="drainage-section">
+  <div class="drainage-section__inner">
+    {%- comment -%} ============ PART 1: Intro + Chart ============ {%- endcomment -%}
+    <div class="drainage-part drainage-part--intro">
+      {%- comment -%} Text column {%- endcomment -%}
+      <div class="drainage-text-col drainage-text-col--intro">
+        <p class="drainage-body">
+          {{ section.settings.intro_text }}
+        </p>
+
+        <p class="drainage-body drainage-body--sub">{{ section.settings.intro_working }}</p>
+
+        <ul class="drainage-check-list drainage-check-list--green">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'green_check' -%}
+              <li {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="#2a9d5c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <div class="drainage-callout drainage-callout--beige">
+          <p>{{ section.settings.callout_estrogen }}</p>
+        </div>
+
+        <ul class="drainage-check-list drainage-check-list--red">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'red_cross' -%}
+              <li {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 6l12 12M18 6l-12 12" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <p class="drainage-body drainage-body--italic">{{ section.settings.instead_text }}</p>
+      </div>
+
+      {%- comment -%} Chart image column {%- endcomment -%}
+      <div class="drainage-img-col drainage-img-col--chart">
+        {%- if section.settings.chart_image != blank -%}
+          <img
+            src="{{ section.settings.chart_image | image_url: width: 800 }}"
+            alt="{{ section.settings.chart_image.alt | default: 'Lymphatic system chart' }}"
+            width="800"
+            height="{{ 800 | divided_by: section.settings.chart_image.aspect_ratio | round }}"
+            loading="lazy"
+            class="drainage-chart-img"
+          >
+        {%- else -%}
+          <div class="drainage-placeholder">
+            <span>Chart image — select in theme editor</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} ============ PART 2: Anatomy images + Accumulation text ============ {%- endcomment -%}
+    <div class="drainage-part drainage-part--accumulation">
+      {%- comment -%} Two side-by-side images {%- endcomment -%}
+      <div class="drainage-img-col drainage-img-col--anatomy">
+        {%- if section.settings.anatomy_image != blank -%}
+          <img
+            src="{{ section.settings.anatomy_image | image_url: width: 800 }}"
+            alt="{{ section.settings.anatomy_image.alt | default: 'Lymphatic vessel diagram' }}"
+            width="800"
+            height="{{ 800 | divided_by: section.settings.anatomy_image.aspect_ratio | round }}"
+            loading="lazy"
+            class="drainage-anatomy-img"
+          >
+        {%- else -%}
+          <div class="drainage-placeholder">
+            <span>Anatomy image — select in theme editor</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Accumulation text column {%- endcomment -%}
+      <div class="drainage-text-col drainage-text-col--accumulation">
+        <p class="drainage-body drainage-body--bold-intro">{{ section.settings.accumulates_heading }}</p>
+        <p class="drainage-body">{{ section.settings.accumulates_body }}</p>
+
+        <div class="drainage-callout drainage-callout--pink">
+          <p>{{ section.settings.callout_waste }}</p>
+
+          <ul class="drainage-check-list drainage-check-list--red">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'thats_why' -%}
+                <li {{ block.shopify_attributes }}>
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 6l12 12M18 6l-12 12" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <p class="drainage-body drainage-body--bold-intro">{{ section.settings.cells_sitting }}</p>
+        <p class="drainage-body">{{ section.settings.longer_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drainage System",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Part 1 — Intro + Chart"
+    },
+    {
+      "type": "image_picker",
+      "id": "chart_image",
+      "label": "Chart image (How Lymphatic System Fails)"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro paragraph",
+      "default": "<p>Your lymphatic system is your body's internal cleaning crew—a network of vessels that processes <strong>3-4 liters of cellular waste and excess fluid every single day.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "intro_working",
+      "label": "Working properly text",
+      "default": "When it's working properly, you don't even know it exists."
+    },
+    {
+      "type": "richtext",
+      "id": "callout_estrogen",
+      "label": "Estrogen callout text",
+      "default": "<p>But after age 35, declining estrogen hijacks this system's ability to function.</p>"
+    },
+    {
+      "type": "text",
+      "id": "instead_text",
+      "label": "Instead text",
+      "default": "Instead of processing and removing waste, it backs up in your tissues."
+    },
+    {
+      "type": "header",
+      "content": "Part 2 — Anatomy + Accumulation"
+    },
+    {
+      "type": "image_picker",
+      "id": "anatomy_image",
+      "label": "Anatomy image (lymphatic vessels)"
+    },
+    {
+      "type": "text",
+      "id": "accumulates_heading",
+      "label": "Accumulation heading",
+      "default": "And it accumulates. Day after day. Week after week."
+    },
+    {
+      "type": "richtext",
+      "id": "accumulates_body",
+      "label": "Accumulation body",
+      "default": "<p>That gallon of fluid your body should be draining every 24 hours? It's pooling in your stomach, your legs, your face—anywhere gravity and tissue structure allow it to settle.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "callout_waste",
+      "label": "Waste callout text",
+      "default": "<p>The metabolic waste your cells produce overnight? It's still sitting there at noon. At dinner. While you're trying to fall asleep.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "cells_sitting",
+      "label": "Cells sitting bold text",
+      "default": "<p><strong>Your cells are literally sitting in their own waste—and your body can't flush it out.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "longer_text",
+      "label": "Closing paragraph",
+      "default": "The longer this goes on, the worse it gets. More congestion. More inflammation. More pressure on an already compromised system."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "green_check",
+      "name": "Green check item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Waste gets drained away"
+        }
+      ]
+    },
+    {
+      "type": "red_cross",
+      "name": "Red cross item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Vessel pumping weakens."
+        }
+      ]
+    },
+    {
+      "type": "thats_why",
+      "name": "That's why item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "That's why you're bloated."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drainage System",
+      "blocks": [
+        { "type": "green_check", "settings": { "text": "Waste gets drained away" } },
+        { "type": "green_check", "settings": { "text": "Fluid stays balanced." } },
+        { "type": "green_check", "settings": { "text": "Your body feels light and energized." } },
+        { "type": "red_cross", "settings": { "text": "Vessel pumping weakens." } },
+        { "type": "red_cross", "settings": { "text": "One-way valves fail." } },
+        { "type": "red_cross", "settings": { "text": "Protein clogs form." } },
+        { "type": "red_cross", "settings": { "text": "Vessel walls become leaky." } },
+        { "type": "thats_why", "settings": { "text": "That's why you're bloated." } },
+        { "type": "thats_why", "settings": { "text": "That's why your ankles swell." } },
+        { "type": "thats_why", "settings": { "text": "That's why you see cellulite." } },
+        { "type": "thats_why", "settings": { "text": "That's why you feel exhausted and foggy." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
