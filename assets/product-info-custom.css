@@ -504,9 +504,23 @@
     margin-top: 0.8rem;
   }
 
+  /* Hide the above/below nav arrows — thumbnails are swipeable horizontally */
+  .thumbnail-slider .slider-button {
+    display: none !important;
+  }
+
   .thumbnail-list {
     gap: 0.6rem;
     padding: 0 0.4rem;
+    /* Make the thumbnail strip freely horizontally scrollable */
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .thumbnail-list::-webkit-scrollbar {
+    display: none;
   }
 
   .thumbnail-list__item .thumbnail {
