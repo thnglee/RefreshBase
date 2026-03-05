@@ -627,19 +627,31 @@
       "blocks": {
         "slide_1": {
           "type": "video_slide",
-          "settings": {}
+          "settings": {
+            "thumbnail": "shopify://shop_images/imgi_15_LymphDrainageREWAMPEDvisualsArtboard6_ffe821de-bc1f-47f9-99c0-e5e925de1036.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519"
+          }
         },
         "slide_2": {
           "type": "video_slide",
-          "settings": {}
+          "settings": {
+            "thumbnail": "shopify://shop_images/imgi_6_LymphDrainageREWAMPEDvisualsArtboard3copy_ea9a1506-090e-4d4c-a1ea-137b246a4dc0.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519"
+          }
         },
         "slide_3": {
           "type": "video_slide",
-          "settings": {}
+          "settings": {
+            "thumbnail": "shopify://shop_images/imgi_18_LymphDrainageREWAMPEDvisualsArtboard10_b9a6c330-b6fd-4a4a-b936-1eb08cf16cbc.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519"
+          }
         },
         "slide_4": {
           "type": "video_slide",
-          "settings": {}
+          "settings": {
+            "thumbnail": "shopify://shop_images/imgi_20_LymphDrainageREWAMPEDvisualsArtboard12_99597e10-aa1e-40b4-bc4e-161edf418331.jpg",
+            "video_url": "https://cdn.shopify.com/s/files/1/0917/5649/5191/files/mingcute_play-fill.png?v=1752485519"
+          }
         }
       },
       "block_order": [
